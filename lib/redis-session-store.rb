@@ -51,9 +51,9 @@ class RedisSessionStore < ActionController::Session::AbstractStore
       options = env['rack.session.options']
       expiry  = options[:expire_after] || nil
       
-      @pool.pipelined do |redis|
-        redis.set(prefixed(sid), Marshal.dump(session_data))
-        redis.expire(prefixed(sid), expiry) if expiry
+      @pool.multi do
+        @pool.set(prefixed(sid), Marshal.dump(session_data))
+        @pool.expire(prefixed(sid), expiry) if expiry
       end
         
       return true
