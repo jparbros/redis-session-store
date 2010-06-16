@@ -13,6 +13,8 @@ only suitable for Rails applications. For other frameworks or
 drop-in support for caching, check out
 [redis-store](http://github.com/jodosha/redis-store/)
 
+Updated to (more or less) work with the redis 2.0 client.
+
 Installation
 ============
 
