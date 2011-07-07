@@ -29,6 +29,8 @@ class RedisSessionStore < ActionController::Session::AbstractStore
     }.update(options)
 
     @redis = Redis.new(@default_options)
+    
+    super
   end
 
   private
